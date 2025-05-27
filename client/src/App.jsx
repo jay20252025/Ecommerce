@@ -20,6 +20,7 @@ import Loading from './components/Loading.jsx'
 import Home from './pages/home.jsx'
 
 
+
 const App = () => {
 
   const isSellerPath = useLocation().pathname.includes('seller');
