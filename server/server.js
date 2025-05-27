@@ -22,7 +22,7 @@ await connectDB()
 await connectCloudinary()
 
 // Add URL of our frontend in the array. You can add multiple URL, all of which can access the backend. 
-const allowedOrigins = ['http://localhost:5173', 'glittering-pegasus-efd4d7.netlify.app'];
+const allowedOrigins = ['http://localhost:5173', 'https://ecommerce-kohl-ten.vercel.app'];
 
 // Endpoint to verify order using Stripe
 app.post('/stripe', express.raw({type:'application/json'}), stripeWebhooks);
