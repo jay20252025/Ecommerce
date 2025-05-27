@@ -63,6 +63,9 @@ export const AppContextProvider = ({ children }) => {
         console.log("client, fetchProducts method");
         try {
             const { data } = await axios.get('/api/product/list');
+            console.log("fetchProducts DaTA", data);
+            console.log("axios", axios);
+            
             // console.log(data, "Print data");
             if (data.success) {
                 setProducts(data.products)

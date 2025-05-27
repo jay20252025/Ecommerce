@@ -1,6 +1,5 @@
 import React from 'react'
 import Navbar from './components/Navbar.jsx'
-import Home from './pages/Home.jsx'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import Footer from './components/Footer.jsx'
@@ -18,6 +17,7 @@ import Orders from './pages/seller/Orders.jsx'
 import ProductList from './pages/seller/ProductList.jsx'
 import AddProduct from './pages/seller/AddProduct.jsx'
 import Loading from './components/Loading.jsx'
+import Home from './pages/home.jsx'
 
 
 const App = () => {
