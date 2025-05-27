@@ -61,10 +61,13 @@ export const AppContextProvider = ({ children }) => {
     const fetchProducts = async () => {
         // setProducts(dummyProducts) //old code without API
         console.log("client, fetchProducts method");
+         console.log("axios", axios);
+         console.log(axios.get('/api/product/list'));
+
         try {
             const { data } = await axios.get('/api/product/list');
             console.log("fetchProducts DaTA", data);
-            console.log("axios", axios);
+            
             
             // console.log(data, "Print data");
             if (data.success) {
