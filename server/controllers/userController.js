@@ -37,7 +37,7 @@ export const register = async (req, res) => {
 
     }
     catch (error) {
-        console.log(error.nmessage);
+        console.log(error.message);
         return res.json({ success: false, message: error.message })
     }
 }
@@ -102,6 +102,7 @@ export const isAuth = async (req, res) => {
 
 // Logout User : /api/user/logout
 export const logout = async (req, res) => {
+    console.log("logout method", req.cookies);
     try {
         res.clearCookie('token', {
             httpOnly: true,
@@ -111,7 +112,7 @@ export const logout = async (req, res) => {
         return res.json({ success: true, message: "Logged Out" });
 
     } catch (error) {
-        console.log(error.nmessage);
+        console.log(error.message);
         return res.json({ success: false, message: error.message })
     }
 }

@@ -35,7 +35,7 @@ export const productList = async (req, res) => {
         res.json({ success: true, products })
     } catch (error) {
         console.log(error.message);
-        res.json({ sucess: false, message: error.message })
+        res.json({ success: false, message: error.message })
     }
 }
 

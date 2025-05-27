@@ -4,6 +4,7 @@ import Address from "../models/Address.js";
 // Add Address : /api/address/add
 export const addAddress = async (req, res) => {
     try {
+        
         const { address, userId } = req.body;
         console.log("In addAddress controller", address, userId);
         await Address.create({ ...address, userId });
