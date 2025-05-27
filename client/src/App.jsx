@@ -17,7 +17,7 @@ import Orders from './pages/seller/Orders.jsx'
 import ProductList from './pages/seller/ProductList.jsx'
 import AddProduct from './pages/seller/AddProduct.jsx'
 import Loading from './components/Loading.jsx'
-import Home from './pages/home.jsx'
+import Home from './pages/Home.jsx'
 
 
 
