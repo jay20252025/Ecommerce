@@ -145,7 +145,7 @@ export const placeOrderStripe = async (req, res) => {
 }
 
 // Stripe Webhooks to Verify Payments Action : /stripe
-export const stripeWebhooks = async (req, res) => {
+export const stripeWebhooks = async (request, response) => {
 
     console.log("Did I enter Stripe webhooks")
     // Stripe Gatewat Initialize

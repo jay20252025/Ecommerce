@@ -6,7 +6,7 @@ const authUser = async (req, res, next) => {
     // get cookies from request. From the cookie we will extract the token. 
     //console.log("inside auth user", req.body);
     const { token } = req.cookies;
-    console.log("authUser", req.cookies);
+    // console.log("authUser", req.cookies);
     if (!token) {
         return res.json({ success: false, message: "Not Authorized" })
     }
@@ -25,7 +25,7 @@ const authUser = async (req, res, next) => {
 
             return res.json({ success: false, message: "Not Authorized" })
         }
-        console.log("About to call next from authUser")
+        // console.log("About to call next from authUser")
         next();
     } catch (error) {
         return res.json({ success: false, message: error.message });
