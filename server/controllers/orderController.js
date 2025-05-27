@@ -11,7 +11,7 @@ export const placeOrderCOD = async (req, res) => {
 
         const { userId, items, address } = req.body;
         if (!address || items.length === 0) {
-            res.json({ sucesss: false, message: "Invald Data" })
+            res.json({ success: false, message: "Invald Data" })
         }
         // Calculate Amount using items
         let amount = await items.reduce(async (acc, item) => {
@@ -31,7 +31,7 @@ export const placeOrderCOD = async (req, res) => {
         return res.json({ success: true, message: "Order Placed Sucessfully" })
     } catch (error) {
         console.log("Entered Catch block");
-        res.json({ sucesss: false, message: error.message })
+        res.json({ success: false, message: error.message })
     }
 }
 
@@ -146,6 +146,8 @@ export const placeOrderStripe = async (req, res) => {
 
 // Stripe Webhooks to Verify Payments Action : /stripe
 export const stripeWebhooks = async (req, res) => {
+
+    console.log("Did I enter Stripe webhooks")
     // Stripe Gatewat Initialize
     const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -167,10 +169,10 @@ export const stripeWebhooks = async (req, res) => {
             const paymentIntentId = paymentIntent.id;
 
             // Getting Session Metadata
-            const session = await stripeInstance.checkout.session.list({
+            const session = await stripeInstance.checkout.sessions.list({
                 payment_intent: paymentIntentId,
 
-            })
+            });
             const { orderId, userId } = session.data[0].metadata;
             // Mark Payment as Paid
             await Order.findByIdAndUpdate(orderId, { isPaid: true });
@@ -178,15 +180,15 @@ export const stripeWebhooks = async (req, res) => {
             await User.findByIdAndUpdate(userId, { cartItems: {} });
             break;
         }
-        case "payment_intent.failed": {
+        case "payment_intent.payment_failed": {
             const paymentIntent = event.data.object;
             const paymentIntentId = paymentIntent.id;
 
             // Getting Session Metadata
-            const session = await stripeInstance.checkout.session.list({
+            const session = await stripeInstance.checkout.sessions.list({
                 payment_intent: paymentIntentId,
 
-            })
+            });
             const { orderId } = session.data[0].metadata;
             await Order.findByIdAndDelete(orderId);
             break;

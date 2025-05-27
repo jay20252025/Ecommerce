@@ -10,7 +10,9 @@ function MyOrders() {
     const fetchMyOrders = async () => {
         //setMyOrders(dummyOrders) // old without API
         try {
+              console.log("Did I enter fetchMyOrders in myOrders")
             const { data } = await axios.get('/api/order/user');
+            console.log(data);
             if (data.success) {
                 setMyOrders(data.orders);
             }
@@ -20,6 +22,7 @@ function MyOrders() {
     }
 
     useEffect(() => {
+        console.log("Did I enter useEffect in myOrders")
         if (user) {
             fetchMyOrders();
         }
